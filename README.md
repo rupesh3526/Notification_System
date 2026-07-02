@@ -96,4 +96,12 @@ POST http://localhost:8080/notification \
 
 ## ER Diagram & Class Diagram
 
-Check diagram folder
+Check diagram folder if link do nont work 
+## ER Diagram
+
+![ER Diagram](diagram/ERDiagram.png)
+
+## Class Diagram
+
+![Class Diagram](diagram/ClassDiagram.png)
+

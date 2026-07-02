@@ -96,8 +96,8 @@ POST http://localhost:8080/notification \
 
 ## ER Diagram
 
-![ER Diagram](diagram/ER_Diagram.png)
+![ER Diagram](diagram/ERDiagram.png)
 
 ## Class Diagram
 
-![Class Diagram](diagram/Class_Diagram.png)
+![Class Diagram](diagram/ClassDiagram.png)

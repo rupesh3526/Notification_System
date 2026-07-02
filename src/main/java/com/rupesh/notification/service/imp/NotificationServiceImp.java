@@ -19,39 +19,45 @@ import com.rupesh.notification.service.UserPreferenceService;
 import com.rupesh.notification.service.UserService;
 @Service
 public class NotificationServiceImp implements NotificationService {
-	@Autowired
+	
 	List< NotificationProvider> notificationProvider ;
-	@Autowired
+	
 	NotificationHistoryRepo  notificationHistoryRepo;
-	@Autowired
+	
 	UserPreferenceService userPreference;
-	@Autowired
+	
 	UserService userService;
 	private static final Logger logger =
             LoggerFactory.getLogger(NotificationServiceImp.class);
-
+	@Autowired
+	NotificationServiceImp(UserPreferenceService userPreference,UserService userService,NotificationHistoryRepo  notificationHistoryRepo,List< NotificationProvider> notificationProvider){
+		this.notificationHistoryRepo=notificationHistoryRepo;
+		this.notificationProvider = notificationProvider;
+		this.userPreference = userPreference;
+		this.userService= userService;
+	}
+	
 	
 	@Override
-	public void send(NotificationRequest nr) {
-		User user =userService.getUserById(nr.getUserID());
+	public void send(NotificationRequest request) {
+		User user =userService.getUserById(request.getUserID());
 		if(user==null) {
-			logger.info("User with id {} not present",nr.getUserID());
+			logger.info("User with id {} not present",request.getUserID());
 			return;
 		}
-		Set<NotificationType> preference = userPreference.getAllChannel(nr.getUserID());
+		Set<NotificationType> preference = userPreference.getAllChannel(request.getUserID());
 		
 		for(NotificationProvider notificationProvider : notificationProvider) {
 			NotificationHistory notificationHistory = new NotificationHistory();
 			notificationHistory.setNotificationChannel(notificationProvider.getChannel());
 			notificationHistory.setUser(user);
 			try {
-			if(nr.getChannels().contains(notificationProvider.getChannel())&& preference.contains(notificationProvider.getChannel())) {
-			StatusType status=	notificationProvider.send( nr);
-				
+			if(request.getChannels().contains(notificationProvider.getChannel())&& preference.contains(notificationProvider.getChannel())) {
+			
+				StatusType status=	notificationProvider.send(request);
 				notificationHistory.setStatus(status);
 				notificationHistoryRepo.save(notificationHistory);
-				logger.info("Notification for user {} sent via {} at{}  is {}",user.getUserName(),notificationProvider.getChannel(),notificationHistory.getTimestamp()
-						,status);
+				logger.info("Notification for user {} sent via {} at{}  is {}",user.getUserName(),notificationProvider.getChannel(),notificationHistory.getTimestamp(),status);
 				
 			}
 			else {

@@ -92,3 +92,12 @@ POST http://localhost:8080/notification \
     "channels": ["EMAIL", "SMS", "PUSH" , "INAPP"]
   }'
 ```
+
+
+## ER Diagram
+
+![ER Diagram](diagram/ER_Diagram.png)
+
+## Class Diagram
+
+![Class Diagram](diagram/Class_Diagram.png)

@@ -19,13 +19,13 @@ The core problem — "send this message through N different channels"
 ```
 src/main/java/com/rupesh/notification
 ├── controller/         REST endpoint
-├── dto/                 NotificationRequest (API contract)
-├── entity/              User, UserPreference, NotificationHistory
-├── enums/                NotificationType, StatusType
-├── repo/                Spring Data JPA repositories
+├── dto/                NotificationRequest (API contract)
+├── entity/             User, UserPreference, NotificationHistory
+├── enums/              NotificationType, StatusType
+├── repo/               Spring Data JPA repositories
 └── service/
-    ├── *.java           Service interfaces (NotificationService, UserService, UserPreferenceService, NotificationProvider)
-    └── imp/               Implementations, including one class per channel
+    ├──                  Service interfaces (NotificationService, UserService, UserPreferenceService, NotificationProvider)
+    └── imp/             Implementations, including one class per channel
 ```
 
 

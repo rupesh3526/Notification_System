@@ -65,7 +65,7 @@ The app reads DB credentials from environment variables:
 
 ### 3. Run the app
 ```bash
-./mvnw spring-boot:run
+mvnw spring-boot:run
 ```
 The app starts on `http://localhost:8080` (Hibernate auto-creates/updates tables via `ddl-auto=update`).
 

@@ -4,6 +4,7 @@ import java.util.Set;
 
 import com.rupesh.notification.enums.NotificationType;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +14,7 @@ import lombok.Setter;
 public class NotificationRequest {
 	@NotNull
 	int userID;
-	@NotNull
+	@NotBlank
 	String notificationTittle;
 	String notificationMessage;
 	@NotNull

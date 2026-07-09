@@ -15,7 +15,7 @@ public interface UserPreferenceRepo extends JpaRepository<UserPreference, Intege
 	 @Query("""
 	           SELECT up.channel
 	           FROM UserPreference up
-	           WHERE up.user.id = :userId
+	           WHERE up.user.userId = :userId
 	           """)
 	    Set<NotificationType> findChannelsByUserId(@Param("userId") Integer userId);
 }

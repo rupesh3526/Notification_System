@@ -19,13 +19,13 @@ The core problem — "send this message through N different channels"
 ```
 src/main/java/com/rupesh/notification
 ├── controller/         REST endpoint
-├── dto/                 NotificationRequest (API contract)
-├── entity/              User, UserPreference, NotificationHistory
-├── enums/                NotificationType, StatusType
-├── repo/                Spring Data JPA repositories
+├── dto/                NotificationRequest (API contract)
+├── entity/             User, UserPreference, NotificationHistory
+├── enums/              NotificationType, StatusType
+├── repo/               Spring Data JPA repositories
 └── service/
-    ├── *.java           Service interfaces (NotificationService, UserService, UserPreferenceService, NotificationProvider)
-    └── imp/               Implementations, including one class per channel
+    ├──                  Service interfaces (NotificationService, UserService, UserPreferenceService, NotificationProvider)
+    └── imp/             Implementations, including one class per channel
 ```
 
 
@@ -65,7 +65,7 @@ The app reads DB credentials from environment variables:
 
 ### 3. Run the app
 ```bash
-./mvnw spring-boot:run
+mvnw spring-boot:run
 ```
 The app starts on `http://localhost:8080` (Hibernate auto-creates/updates tables via `ddl-auto=update`).
 
